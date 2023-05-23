@@ -7,9 +7,9 @@ const Router = () => {
     <BrowserRouter>
       <Suspense fallback={<div>loading</div>}>
         <Routes>
-          {routerPaths.map(({ key, path, component }) => {
+          {routerPaths.map(({ path, component }) => {
             const Component = component as LazyExoticComponent<ComponentType>;
-            return <Route key={key} path={path} element={<Component />} />;
+            return <Route key={`id-${path}`} path={path} element={<Component />} />;
           })}
         </Routes>
       </Suspense>

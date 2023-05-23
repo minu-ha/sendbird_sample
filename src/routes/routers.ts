@@ -1,32 +1,29 @@
 import { FC, lazy, LazyExoticComponent } from 'react';
 
 export interface Router {
-  key: string;
   path: string;
   component?: LazyExoticComponent<FC>;
   children?: Router[];
 }
 
-enum ROUTE_KEY {
-  LOGIN = 'login',
-  OPEN_CHAT = 'open-chat',
-}
-
-enum ROUTE_PATH {
-  LOGIN = '/',
-  OPEN_CHAT = '/open-chat',
+export enum ROUTE_PATH {
+  HOME = '/',
+  GROUP_CHANNEL = '/group-channel',
+  CHAT = '/chat',
 }
 
 export const routers: Router[] = [
   {
-    path: ROUTE_PATH.LOGIN,
-    component: lazy(() => import('pages/Login')),
-    key: ROUTE_KEY.LOGIN,
+    path: ROUTE_PATH.HOME,
+    component: lazy(() => import('pages/home')),
   },
   {
-    path: ROUTE_PATH.OPEN_CHAT,
-    component: lazy(() => import('pages/OpenChat')),
-    key: ROUTE_KEY.OPEN_CHAT,
+    path: ROUTE_PATH.GROUP_CHANNEL,
+    component: lazy(() => import('pages/channel')),
+  },
+  {
+    path: ROUTE_PATH.CHAT,
+    component: lazy(() => import('pages/chat')),
   },
 ];
 
